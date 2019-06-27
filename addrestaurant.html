@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Restaurant</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-light text-dark">
+        <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+        <!-- <div class="text-white"> -->
+    <div class="navbar-nav">
+    <a href="#" class="nav-link active"><h4>EATIVE</h4></a>
+    </div>
+    <div class="navbar-nav">
+    <a href="#" class="nav-link active">Logout</a>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-sm bg-white text-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Agreement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Payment</a>
+          </li>
+        </ul>
+      </nav>
+</br></br></br>
+<div class="container">
+
+    <div class="row">   
+    <div class="col-sm-8">
+        <form class = 'form-label-group' method="POST" action="/addmenu">
+          <div class="row">
+        <div class="col-sm-8">
+          <div class="col-sm-12">
+    <h2>Add Restaurant</h2>
+    <h5>Basic info</h5>
+</div>
+        </div>
+<!-- <div class="col-sm-3"></br>
+  <form action="/upload/photo" enctype="multipart/form-data" method="POST"> 
+    <input type="file" name="myImage" multiple accept="image/*" />
+    <input type="submit" value="Upload Photo"/>
+  </form>
+        <input type="submit">
+</div> -->
+          </div>
+            <div class="bg-white"></br>
+                <div class="container">
+            <!-- <h3>hello</h3> -->
+            <div class="col-sm-12">
+            <p>Restaurant Name</p>
+            <input id = 'username' name="restaurant" type="text" class = 'form-control form-control-md' placeholder="Enter Restaurant name..." required autofocus/></br>
+            </div>
+            <div class="col-sm-12">
+            <p>Owner Email</p>
+            <input id = 'username' name="email" type="email" class = 'form-control form-control-md' placeholder="Enter owner Email again..." required autofocus/></br>
+            </div>
+            <div class="col-sm-8">
+            <p>Location</p>
+            <input id = 'username' name='address' type="text" class = 'form-control form-control-md' placeholder="Enter restaurant's location..." required autofocus/></br>
+            </div>  
+            <div class="col-sm-6">
+            <p>Pincode</p>
+            <input id = 'username' name = 'pincode' type="number" class = 'form-control form-control-md' placeholder="Enter city pincode..." required autofocus/></br></div>
+            <div class="col-sm-6">
+            <p>State</p>
+            <input id = 'username' name = 'state' type="text" class = 'form-control form-control-md' placeholder="Enter State..." required autofocus/></br>
+            </div>
+            <div class="col-sm-12">
+            <p>Description</p>
+            <input id = 'username' name = "Description" type="text" class = 'form-control form-control-md' placeholder="Description should be atleast 200 words..." required autofocus/></br>
+            </div>
+            <!-- <div class=" -->
+        <!-- </div>
+        </div> -->
+        <!-- <div></br>
+            <div class="col-sm-12">
+            <h2>Characteristics</h2>
+            </div>
+        </div>
+        <div class="bg-white"></br>
+        <div class="container">
+                <p>ALCOHOL</p>
+                <div class="form-inline">   
+                <input type="radio" class="form-check-input" value="yes" />yes  
+                <input type="radio" class="form-check-input" value="no" />no
+        </div></br></br>
+        <p>SERVICES</p>
+        <div class="form-inline">
+                <input type="checkbox" class="form-check-input" value="">Breakfast
+                <input type="checkbox" class="form-check-input" value="">Lunch
+                <input type="checkbox" class="form-check-input" value="">Dinner
+                <input type="checkbox" class="form-check-input" value="">Cafe
+                <input type="checkbox" class="form-check-input" value="">Nightlife
+            </div></br></br>
+        <p>SEATING</p>
+        <div class="form-inline">
+                <input type="radio" class="form-check-input"  value="yes" />Available 
+                <input type="radio" class="form-check-input"  value="no" />Seating Unavailable
+            </div></br></br>
+        <p>PAYMENT</p>
+        <div class="form-inline">
+                <input type="checkbox" class="form-check-input" value="">Cards
+                <input type="checkbox" class="form-check-input" value="">Cash
+                <input type="checkbox" class="form-check-input" value="">E-wallets
+            </div></br></br>
+        <div class="col-sm-4">
+                <p>PRICE FOR 2</p>
+        <input placeholder="Eg. Rs 500/-...." class = "form-control form-control-md" type="number"></br>
+        </div>
+        <p>CUISINES</p>
+        <div class="dropdown">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                  Cuisines
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Afghan</a>
+                  <a class="dropdown-item" href="#">American</a>
+                  <a class="dropdown-item" href="#">Chinese</a>
+                </div>
+              </div></br>
+        </div>
+        </div> -->
+        <!-- <div class="col-sm-12"></br>
+                <h2>Days Open</h2>
+        </div>
+                <div class="bg-white"></br>
+
+        <div class="container">
+                <div class="form-check-inline">
+                        <input type="checkbox" class="form-check-input" value="">Monday
+                        <input type="checkbox" class="form-check-input" value="">Tuesday
+                        <input type="checkbox" class="form-check-input" value="">Wednesday
+                        <input type="checkbox" class="form-check-input" value="">Thursday
+                        <input type="checkbox" class="form-check-input" value="">Friday
+                        <input type="checkbox" class="form-check-input" value="">Saturday
+                        <input type="checkbox" class="form-check-input" value="">Sunday
+                    </div></br></br>
+            </div>
+        </div></br> -->
+
+        <!-- <div class="col-sm-12"></br>
+            <h2>Contact Information</h2>
+    </div> -->
+            <!-- <div class="bg-white"></br>
+
+    <div class="container"> -->
+        <div class="row">
+          <div class="col-sm-6">
+              <p>Restaurant Website</p>
+            <input type='url' class = "form-control form-control-md" placeholder="Restaurant website..." name = 'reswebsite' required autofocus/>
+        </div>
+          <div class="col-sm-6">
+              <p>Restaurant Email</p>
+                <input type='email' class = "form-control form-control-md" placeholder="Restaurant email..." name = 'resemail' required autofocus/>
+          </div>
+        </div>
+        </div></br>
+    </div></br>
+     <div>
+        <button id = 'button' class="btn btn-lg btn-success btn-block"  type="submit" >Save & Continue</button></br>
+     </form>
+    </div>
+
+    </div>
+    <div class="col-sm-4"></br></br>
+            <h5>Help!</h5>
+            
+            <div class="bg-white">
+            <div class="col-sm-11">
+            </br>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+
+</body>
+</html>

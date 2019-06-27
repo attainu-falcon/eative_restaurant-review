@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>owner panel</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body class="bg-light text-dark">
+        <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+        <!-- <div class="text-white"> -->
+    <div class="navbar-nav">
+    <a href="#" class="nav-link active"><h4>EATIVE</h4></a>
+    </div>
+    <div class="navbar-nav">
+    <a href="#" class="nav-link active">Logout</a>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-sm bg-white text-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Agreement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Payment</a>
+          </li>
+        </ul>
+      </nav>
+</br></br>
+<div class="container">
+    <div class="row">   
+    <div class="col-sm-8">
+        <div class="row">
+
+              <div id = 'display1'>
+              </div>
+        
+    </div></br></br>
+
+  </br></br>
+    <a href="/addrestaurant" class="btn btn-success btn-block">Add New Restaurant</a>
+    
+    </div>
+  
+       
+    <div class="col-sm-4"></br></br>
+            <h5>Help!</h5>
+            
+            <div class="bg-white">
+            <div class="col-sm-11">
+            </br>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+
+
+  $.ajax({
+     url: '/cards',
+     dataType: 'json',
+     method : "get",
+     success: function(result) {
+       for (var i=0; i<result.length; i++){
+
+      var display = "";
+      display += '<div class="row">';
+      display += '<div class="col-sm-3">';
+      display += '<img src ="https://cdn.pixabay.com/photo/2017/12/10/14/47/piza-3010062_960_720.jpg"  height="203px"/>';
+      display += '</div>';
+      display += '<div class="col-sm-7">';
+      display += '<div class="card">';
+      display += '<div class="card-body">';
+      display += '<h5 class="card-title">' + result[i].restaurant+'</h5>';
+      display += '<p class="card-text">' + result[i].Description + '</p>';
+      display += '<a href="#" class="btn btn-success float-right">View Restaurant</a>';
+      display += '</div></div></div>';
+      display += '<div class="col-sm-2">' + '</br>';
+      display += '<a href="#" class="btn btn-block btn-success">Upload Images</a>' + '</br>';
+      display += '<a href="#" class="btn btn-block btn-success">Edit Information</a>';
+      display += '</div></div>' + '</br></br>'
+        
+      $('#display1').append(display)
+        } 
+      }
+  })
+</script>
+</body>
+</html>
