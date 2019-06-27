@@ -1,0 +1,28 @@
+.thumbnail img {
+	width: 100%;
+}
+
+.thumbnail {
+	padding: 0;
+}
+
+.thumbnail .caption-full {
+	padding: 9px;
+}
+
+.delete-form {
+	display: inline;
+}
+
+body {
+	/* background-image: url('https://images.unsplash.com/photo-1508615039623-a25605d2b022?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+	
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	/* background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;  */
+
+	background-color: rgb(236, 226, 226);
+}

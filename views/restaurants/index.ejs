@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome To EATIVE</h1>
+			<p>
+				Widest Range Of Delivery Restaurants | Trusted Eative Ratings |
+				Unlimited Choices
+			</p>
+			<p>
+				<!-- <a class="btn btn-primary btn-large" href="/restaurants/new"
+					>Add New Restaurant</a
+				> -->
+				<!-- <a class="btn btn-primary btn-large" href="#">Sort By Ratings</a>
+			</p> -->
+			</p>
+		</div>
+	</header>
+	<div class="row text-center" style="display:flex;flex-wrap:wrap;">
+		<% restaurants.forEach(function(restaurant){ %>
+		<div class="col-md-3 col-sm-6">
+			<div class="thumbnail">
+				<img src="<%= restaurant.image %>" />
+				<div class="caption">
+					<h4><%= restaurant.name %></h4>
+					<% if (restaurant.reviews.length === 0) { %>
+					<em>No reviews yet.</em>
+					<% } else { %>
+					<span
+						style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;"
+					>
+						Rating: <%=restaurant.rating.toFixed(2)%> </span
+					><% } %>
+				</div>
+				<p>
+					<a href="/restaurants/<%= restaurant._id %>" class="btn btn-primary"
+						>More Info</a
+					>
+				</p>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+<% include ../partials/footer %>
