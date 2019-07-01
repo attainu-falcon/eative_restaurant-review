@@ -1,0 +1,23 @@
+<h3> YOUR RESTAURANTS</h3></br>
+
+
+  {{#each data}}
+        <div class="row">
+        <div class="col-sm-3">
+        <img src ="{{this.imageurl}}"  height="203px"/>
+        </div>
+        <div class="col-sm-7">
+        <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">  {{this.restaurant}}  </h5>
+        <p class="card-text">  {{this.description}} </p>
+        <a href="#" class="btn btn-success float-right">View Restaurant</a>
+        </div></div></div>
+        <div class="col-sm-2">  </br>
+        <a href="/delete/{{this._id}}" class="btn btn-block btn-success">Delete Restaurant</a>  </br>
+        <a href="/editrestaurant/{{this._id}}" class="btn btn-block btn-success">   Edit Information  </a>
+        </div></div>  </br></br>
+  {{/each}}
+
+
+<a href="/addrestaurant" class="btn btn-success btn-block">Add New Restaurant</a>

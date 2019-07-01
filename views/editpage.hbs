@@ -1,0 +1,108 @@
+<h3> Edit Restaurant</h3></br>
+
+<div class="bg-white"></br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+     <form class = 'form-label-group' method="POST" action="/updatename">
+         <label class = "h5" for = "rest">Restaurant Name:</label></br>
+         <p>{{data.restaurant}}</p>
+         <input id = "rest" class = "form-control form-control-md d-none"name = "restaurant" placeholder = "{{data.restaurant}}"/>
+         <button class = "save btn btn-sm btn-success d-none"  type="submit" >Save</button></br>
+    </form> </div>
+    <div class = "col-sm-2">
+    <button class = "cancel d-none" >cancel</button>
+     <button class = "edit-button">Edit</button>
+     </div>
+     </div>
+
+             <div class="row">
+            <div class="col-sm-10">
+     <form class = 'form-label-group' method="POST" action="/updateaddress">
+         <label class = "h5" for = "rest">Restaurant Addres:</label></br>
+         <p>{{data.address}}</p>
+         <input id = "rest" class = "form-control form-control-md d-none"name = "addresss" placeholder = "{{data.address}}"/>
+         <button class = "save btn btn-sm btn-success d-none"  type="submit" >Save</button></br>
+    </form> </div>
+    <div class = "col-sm-2">
+    <button class = "cancel d-none" >cancel</button>
+     <button class = "edit-button">Edit</button>
+     </div>
+     </div>
+
+             <div class="row">
+            <div class="col-sm-10">
+     <form class = 'form-label-group' method="POST" action="/updatedescription">
+         <label class = "h5" for = "rest">Description:</label></br>
+         <p>{{data.description}}</p>
+         <input id = "rest" minlength="100" maxlength="140" class = "form-control form-control-md d-none"name = "description" placeholder = "{{data.description}}"/>
+         <button class = "save btn btn-sm btn-success d-none"  type="submit" >Save</button></br>
+    </form> </div>
+    <div class = "col-sm-2">
+    <button class = "cancel d-none" >cancel</button>
+     <button class = "edit-button">Edit</button>
+     </div>
+     </div>
+
+             <div class="row">
+            <div class="col-sm-10">
+     <form class = 'form-label-group' method="POST" action="/updatereswebsite">
+         <label class = "h5" for = "rest">Restaurant Website:</label></br>
+         <p>{{data.reswebsite}}</p>
+         <input id = "rest" class = "form-control form-control-md d-none"name = "reswebsite" placeholder = "{{data.reswebsite}}"/>
+         <button class = "save btn btn-sm btn-success d-none"  type="submit" >Save</button></br>
+    </form> </div>
+    <div class = "col-sm-2">
+    <button class = "cancel d-none" >cancel</button>
+     <button class = "edit-button">Edit</button>
+     </div>
+     </div>
+
+       <div class="row">
+            <div class="col-sm-10">
+     <form class = 'form-label-group' method="POST" action="/updateresemail">
+         <label class = "h5" for = "rest">Restaurant Email:</label></br>
+         <p>{{data.resemail}}</p>
+         <input id = "rest" class = "form-control form-control-md d-none"name = "resemail" placeholder = "{{data.resemail}}"/>
+         <button class = "save btn btn-sm btn-success d-none"  type="submit" >Save</button></br>
+    </form> </div>
+    <div class = "col-sm-2">
+    <button class = "cancel d-none" >cancel</button>
+     <button class = "edit-button">Edit</button>
+     </div>
+     </div>
+
+     
+     </div>
+</div></br></br>
+
+<a href="/panel" class="btn btn-block btn-success">go back</a>
+
+<script>
+    $('.edit-button').on('click',function(){
+
+    $(this).parent().parent().find('input').removeClass('d-none');
+     $(this).parent().parent().find('.save').removeClass('d-none');
+     $(this).parent().parent().find('p').addClass('d-none');
+     $(this).addClass('d-none');
+     $(this).parent().find('.cancel').removeClass('d-none');
+})
+
+$('.save').on('click',function(){
+
+    $(this).parent().parent().find('input').addClass('d-none');
+     $(this).parent().parent().find('.edit-button').removeClass('d-none');
+     $(this).parent().parent().find('p').removeClass('d-none');
+     $(this).addClass('d-none');
+})
+
+$('.cancel').on('click',function(){
+
+    $(this).parent().parent().find('input').addClass('d-none');
+     $(this).parent().parent().find('.save').addClass('d-none');
+     $(this).parent().parent().find('.edit-button').removeClass('d-none');
+     $(this).parent().parent().find('p').removeClass('d-none');
+     $(this).addClass('d-none');
+})
+
+</script>

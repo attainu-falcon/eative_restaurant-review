@@ -1,0 +1,46 @@
+      <form class = 'form-label-group' method="POST" action="/uploadphotos">
+          <div class="row">
+        <div class="col-sm-8">
+          <div class="col-sm-12">
+    <h2>Add Restaurant</h2>
+    <h5>Basic info</h5>
+</div>
+        </div>
+         {{!-- <input type="file" name="uploadedfile" id="fileToUpload"> --}}
+          </div>
+            <div class="bg-white"></br>
+                <div class="container">
+            <div class="col-sm-12">
+            <p>Restaurant Name</p>
+            <input id = 'username' name="restaurant" type="text" class = 'form-control form-control-md' placeholder="Enter Restaurant name..." required autofocus/></br>
+            </div>
+            <div class="col-sm-8">
+            <p>Location</p>
+            <input id = 'username' name='address' type="text" class = 'form-control form-control-md' placeholder="Enter restaurant's location..." required autofocus/></br>
+            </div>  
+            <div class="col-sm-6">
+            <p>Pincode</p>
+            <input id = 'username' name = 'pincode' type="number" class = 'form-control form-control-md' placeholder="Enter city pincode..." required autofocus/></br></div>
+            <div class="col-sm-6">
+            <p>State</p>
+            <input id = 'username' name = 'state' type="text" class = 'form-control form-control-md' placeholder="Enter State..." required autofocus/></br>
+            </div>
+            <div class="col-sm-12">
+            <p>Description</p>
+            <input id = 'username' minlength="100" maxlength="140" name = "description" type="text" class = 'form-control form-control-md' placeholder="Description should be between 100 to 140 characters..." required autofocus/></br>
+            </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+              <p>Restaurant Website</p>
+            <input type='url' class = "form-control form-control-md" placeholder="Restaurant website..." name = 'reswebsite' required autofocus/>
+        </div>
+          <div class="col-sm-6">
+              <p>Restaurant Email</p>
+                <input type='email' class = "form-control form-control-md" placeholder="Restaurant email..." name = 'resemail' required autofocus/>
+          </div>
+        </div>
+        </div></br>
+    </div></br>
+        <button id = 'button' class="btn btn-lg btn-success btn-block"  type="submit" >Save & Continue</button></br>
+     </form>

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,11 @@
   "homepage": "https://github.com/attainu-falcon/eative_restaurant-review#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.14.0",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",
     "mongodb": "^3.2.7",
     "multer": "^1.4.1"
