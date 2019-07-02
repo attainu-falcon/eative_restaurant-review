@@ -45,13 +45,12 @@ app.set('views',path.join(__dirname, 'views'));
 
 // Login file served 
 app.get('/', function(req,res,next){
-    res.sendfile('login.html');
-    // console.log(__dirname);
+    res.sendfile('public/login.html');
 })
 
 // signup file served
 app.get('/signup', function(req,res,next){
-    res.sendfile('signup.html');
+    res.sendfile('public/signup.html');
 })
 
 // owner added to database
@@ -137,34 +136,31 @@ app.post('/update',function(req,res){
 
 
 // this will add the restaurant to database
-app.post('/uploadphotos',function(req,res){
+app.post('/uploadphotos', upload.single('uploadedfile'),function(req,res){
     db.collection('restaurant').insertOne(req.body, function(err,result){
-        if(err){
-            throw err;
-        }
-        ADDID = req.body._id;
-        db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(ADDID) },{$set : {email : EMAILID}},function(err,result){
-            if(err){
-                throw err;
-            }
+       ADDID = req.body._id;
+            db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(ADDID) },{$set : {email : EMAILID}},function(err,result){
+                 cloudinary.uploader.upload(req.file.path, function(error, result) {
+                    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(ADDID) },{$set : {imageurl : result.secure_url}},function(err,result){
+                    if(err){
+                         throw err;
+            }   res.redirect('/panel');
         })
-    })   // (the code below will load the upload photos page)
-    res.render('photos',{
-         title : 'upload photos'
+    })
+    }) 
  })
 })
-
 // this will update image url in restaurant database
-app.post('/upload',upload.single('uploadedfile'),function(req,res){
-    cloudinary.uploader.upload(req.file.path, function(error, result) {
-        db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(ADDID) },{$set : {imageurl : result.secure_url}},function(err,result){
-            if(err){
-                throw err;
-            }
-        })
-    });
-    res.redirect('/panel');
-})
+// app.post('/upload',upload.single('uploadedfile'),function(req,res){
+//     cloudinary.uploader.upload(req.file.path, function(error, result) {
+//         db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(ADDID) },{$set : {imageurl : result.secure_url}},function(err,result){
+//             if(err){
+//                 throw err;
+//             }
+//         })
+//     });
+//     res.redirect('/panel');
+// })
 
 app.get('/logout',function(req, res){
     req.session.destroy();
@@ -173,10 +169,11 @@ app.get('/logout',function(req, res){
 
 // for urls which are not available
 app.get('/*',function(req,res){
-    res.sendfile("404.html")
+    res.sendfile("public/404.html")
 })
 
 // app.use(express.static('public'))
+
 
 
 app.listen(3000);
