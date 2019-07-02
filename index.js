@@ -8,7 +8,16 @@ var cloudinary = require('cloudinary').v2;
 var hbs = require('express-handlebars')
 var mongoclient = require('mongodb').MongoClient;
 
-mongoclient.connect('mongodb://localhost:27017',function(err, client){
+var app = express();
+
+// var DBURL;
+
+// if(process.env.MY_DB)
+//     DBURL = process.env.MY_DB
+//  else
+    DBURL = 'mongodb://localhost:27017';
+
+mongoclient.connect(DBURL,function(err, client){
     if(err){
         throw err
     } 
@@ -20,10 +29,7 @@ cloudinary.config({
     cloud_name : process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
-  });
-  
-
-var app = express();
+});
 
 app.use(session({
     secret : 'secret'
@@ -38,19 +44,20 @@ app.set('view engine','hbs')
 app.set('views',path.join(__dirname, 'views'));
 
 // Login file served 
-app.get('/', function(req,res){
+app.get('/', function(req,res,next){
     res.sendfile('login.html');
+    // console.log(__dirname);
 })
 
 // signup file served
-app.get('/signup', function(req,res){
+app.get('/signup', function(req,res,next){
     res.sendfile('signup.html');
 })
 
 // owner added to database
 app.post('/auth',function(req,res){
 
-        db.collection('owner').insert(req.body, function(err,result){
+        db.collection('owner').insertOne(req.body, function(err,result){
             if(err){
                 throw err;
             }
@@ -118,9 +125,9 @@ app.get('/editrestaurant/:_id',function(req,res){
     })
 });
 
-// this will update the restaurant name
-app.post('/updatename',function(req,res){
-    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(EDIT_ID) },{$set : {restaurant : req.body.restaurant}},function(err,result){
+// this will update the restaurant
+app.post('/update',function(req,res){
+    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(EDIT_ID) },{ $set : { address : req.body.address , reswebsite : req.body.reswebsite, restaurant : req.body.restaurant, resemail : req.body.resemail, description : req.body.description }},function(err,result){
         if (err){
             throw err;
         }
@@ -128,45 +135,6 @@ app.post('/updatename',function(req,res){
     })
 });
 
-// this will update the restaurant address
-app.post('/updateaddress',function(req,res){
-    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(EDIT_ID) },{$set : {address : req.body.address}},function(err,result){
-        if (err){
-            throw err;
-        }
-        res.redirect('back');
-    })
-});
-
-//this will update the restaurant website
-app.post('/updatereswebsite',function(req,res){
-    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(EDIT_ID) },{$set : {reswebsite : req.body.reswebsite}},function(err,result){
-        if (err){
-            throw err;
-        }
-        res.redirect('back');
-    })
-});
-
-//this will update the restaurant email
-app.post('/updateresemail',function(req,res){
-    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(EDIT_ID) },{$set : {resemail : req.body.resemail}},function(err,result){
-        if (err){
-            throw err;
-        }
-        res.redirect('back');
-    })
-});
-
-//this will update the restaurant description
-app.post('/updatedescription',function(req,res){
-    db.collection('restaurant').updateOne({ _id : require('Mongodb').ObjectID(EDIT_ID) },{$set : {description : req.body.description}},function(err,result){
-        if (err){
-            throw err;
-        }
-        res.redirect('back');
-    })
-});
 
 // this will add the restaurant to database
 app.post('/uploadphotos',function(req,res){
@@ -208,6 +176,7 @@ app.get('/*',function(req,res){
     res.sendfile("404.html")
 })
 
+// app.use(express.static('public'))
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(3000);
