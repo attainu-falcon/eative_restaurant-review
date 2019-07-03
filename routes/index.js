@@ -12,7 +12,7 @@ var session = require('express-session');
 // App routes (URLs)
 //main landing page with just logo
 router.get('/', function(request, response) {
-	response.render('index.hbs');
+	response.render('landing.hbs');
 });
 
 module.exports = router;
