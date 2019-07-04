@@ -46,6 +46,9 @@
                     <li>
                         <a href="https://www.linkedin.com/in/monika9/">ABOUT</a>
                     </li>
+                    <li>
+                        <a href="/owners/add">ADD RESTAURANT</a>
+                    </li>
                 </ul>
                 <div class="collapse navbar-collapse">
                     <ul class=" nav navbar-nav navbar-right">
@@ -79,7 +82,9 @@
 
                         <p>{{restaurant.description}}</p>
                         <p>
-                            Current restaurant rating: <strong>{{restaurant.avgRating}}</strong>
+                            Current restaurant rating: <strong><span
+                                    style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">{{restaurant.avgRating}}
+                                    stars</span></strong>
                         </p>
 
                     </div>
@@ -95,9 +100,10 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Ratings and
                             Reviews
                         </a>
+                        <p></p>
                     </div>
 
-                    <hr />
+                    <hr>
 
                     <div class="row" style="background-color:blanchedalmond;padding:9px;margin:10px;">
                         <form action="/restaurants/{{restaurant._id}}" method="POST">
@@ -106,41 +112,38 @@
 
 
                             <div class="form-group">
-                                <input class="form-control" type="number" name="rating" placeholder="rating" required />
+                                <input class="form-control" type="number" name="rating" placeholder="rating (1-5)"
+                                    required />
                             </div>
                             <div class="form-group">
                                 <input class="form-control" type="text" name="review" placeholder="review" required />
                             </div>
-                            {{!-- <div class="form-group">
-                                <input class="form-control" type="text" name="author" placeholder="author" required />
-                            </div> --}}
+
 
                             <div class="form-group">
                                 <button class="btn btn-lg btn-primary btn-block ">Submit!</button>
                             </div>
                         </form>
-                    </div>
 
+                    </div>
+                    {{#each commentAndRatings}}
                     <div class="row" style="background-color:blanchedalmond;padding:9px;margin:10px;">
 
-                        <div class="col-md-12">
-                            {{#each commentAndRatings}}
-                            <div style="background-color:rgb(221, 207, 186);padding:9px;margin:10px;">
+                        <div class="col-md-12 ">
+
+                            <div>
                                 <strong>
                                     <span style="color: orange;" class="glyphicon glyphicon-user"
-                                        aria-hidden="true"></span>{{this.author}}</strong>
-
-                                <p>Rated: {{this.rating}} stars</p>
-
-
+                                        aria-hidden="true"></span>
+                                    {{this.author}}</strong> <span
+                                    style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">Rated:
+                                    {{this.rating}} stars</span>
+                                <p></p>
                                 <p>{{this.review}}</p>
                             </div>
-                            {{/each}}
-
                         </div>
-                        <hr>
-
                     </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
