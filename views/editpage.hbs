@@ -1,10 +1,14 @@
+<div class="container">
+
+    <div class="row">   
+    <div class="col-sm-8">
 <h3> Edit Restaurant</h3></br>
 
 <div class="bg-white"></br>
     <div class="container">
         <div class="row">
             <div class="col-sm-10">
-     <form class = 'form-label-group' method="POST" action='/update'>
+     <form class = 'form-label-group' method="POST" action='/owner/update'>
          <label class = "h5" for = "rest">Restaurant Name:</label></br>
          <p>{{data.restaurant}}</p>
          <input id = "rest" class = "form-control form-control-md d-none"name = "restaurant" value="{{data.restaurant}}" required autofocus/>
@@ -37,7 +41,33 @@
      </div>
 </div></br></br>
 
-<a href="/panel" class="btn btn-block btn-success">go back</a>
+<a href="/owner/panel" class="btn btn-block btn-success">go back</a>
+
+ </div>
+       
+    <div class="col-sm-4"></br></br>
+    <div class="container">
+                  <h5>Help!</h5>
+            
+             <div class="bg-white">
+            <div id = 'help' class="col-sm-12">
+             
+            </br>
+                <p>How it works</p>
+                <ul>
+                  <li>If you are the owner of a restaurant, let us know using this form.</li>
+                  <li>Once you send the information to us, our awesome content team will verify it. To help speed up the process, please provide a accurate address.</li>
+                  <li>
+                    That's it! Once verified the listing will start appearing on Eative
+                  </li>
+                </ul></br>
+    </div>
+    </div>
+    </div>
+    </div>
+
+</div>
+</div>
 
 <script>
     $('.edit-button').on('click',function(){

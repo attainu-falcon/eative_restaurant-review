@@ -1,28 +1,30 @@
 {
-  "name": "eative_restaurant-review",
+  "name": "eative",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "engines": {
+    "node": "12.3.1",
+    "npm" : "6.9.0"
+  },
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start":"node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/attainu-falcon/eative_restaurant-review.git"
+    "url": "git+https://github.com/shubham-arora-au2/eative.git"
   },
-  "keywords": [],
   "author": "shubham",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/attainu-falcon/eative_restaurant-review/issues"
+    "url": "https://github.com/shubham-arora-au2/eative/issues"
   },
-  "homepage": "https://github.com/attainu-falcon/eative_restaurant-review#readme",
+  "homepage": "https://github.com/shubham-arora-au2/eative#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cloudinary": "^1.14.0",
     "dotenv": "^8.0.0",
-    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",

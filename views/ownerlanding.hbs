@@ -1,3 +1,7 @@
+<div class="container">
+
+    <div class="row">   
+    <div class="col-sm-8">
 <h3> YOUR RESTAURANTS</h3></br>
 
 
@@ -11,13 +15,39 @@
         <div class="card-body">
         <h5 class="card-title">  {{this.restaurant}}  </h5>
         <p class="card-text">  {{this.description}} </p>
-        <a href="#" class="btn btn-success float-right">View Restaurant</a>
+        <a href="/owner/restaurant/{{this._id}}" class="btn btn-success float-right">View Restaurant</a>
         </div></div></div>
         <div class="col-sm-2">  </br>
-        <a href="/delete/{{this._id}}" class="btn btn-block btn-success">Delete Restaurant</a>  </br>
-        <a href="/editrestaurant/{{this._id}}" class="btn btn-block btn-success">   Edit Information  </a>
+        <a href="/owner/delete/{{this._id}}" class="btn btn-block btn-success">Delete Restaurant</a>  </br>
+        <a href="/owner/editrestaurant/{{this._id}}" class="btn btn-block btn-success">   Edit Information  </a>
         </div></div>  </br></br>
   {{/each}}
 
 
-<a href="/addrestaurant" class="btn btn-success btn-block">Add New Restaurant</a>
+<a href="/owner/addrestaurant" class="btn btn-success btn-block">Add New Restaurant</a>
+
+</div>
+       
+    <div class="col-sm-4"></br></br>
+    <div class="container">
+                  <h5>Help!</h5>
+            
+             <div class="bg-white">
+            <div id = 'help' class="col-sm-12">
+             
+            </br>
+                <p>How it works</p>
+                <ul>
+                  <li>If you are the owner of a restaurant, let us know using this form.</li>
+                  <li>Once you send the information to us, our awesome content team will verify it. To help speed up the process, please provide a accurate address.</li>
+                  <li>
+                    That's it! Once verified the listing will start appearing on Eative
+                  </li>
+                </ul></br>
+    </div>
+    </div>
+    </div>
+    </div>
+
+</div>
+</div>
