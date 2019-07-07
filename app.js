@@ -9,7 +9,7 @@ var session = require('express-session');
 //for routers folder
 var restaurantRoutes = require('./routes/restaurants');
 var indexRoutes = require('./routes/index');
-var ownerRoutes = require('./routes/owner');
+//var ownerRoutes = require('./routes/owner');
 
 // Create the app
 var app = express();
@@ -24,11 +24,11 @@ app.use(session({ secret: 'catkey', resave: false, saveUninitialized: false }));
 //for routers folder
 app.use('/', indexRoutes);
 app.use('/restaurants', restaurantRoutes);
-app.use('/owners', ownerRoutes);
+//app.use('/owners', ownerRoutes);
 
 // Create the DB connection
 var DB;
-var DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/eativerepo';
+var DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/eative';
 
 // Create a Mongo client
 var mongoClient = new mongo.MongoClient(DB_URL, { useNewUrlParser: true });
@@ -37,7 +37,7 @@ mongoClient.connect(function(error) {
 		console.log('Error connecting to the database.');
 	} else {
 		console.log('DB connection established.');
-		DB = mongoClient.db('eativerepo');
+		DB = mongoClient.db('eative');
 		app.locals.DB = DB;
 	}
 });

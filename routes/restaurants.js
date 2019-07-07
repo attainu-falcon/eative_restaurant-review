@@ -9,6 +9,51 @@ var bodyParser = require('body-parser');
 
 var session = require('express-session');
 
+//Show all restaurants according to ratings
+// router.get('/', function(request, response) {
+// 	var DB = request.app.locals.DB;
+// 	DB.collection('restaurants')
+// 		.find()
+// 		.toArray(function(err, restaurants) {
+// 			if (err) {
+// 				throw err;
+// 			}
+// 			restaurants.sort(function(a, b) {
+// 				return a.avgRating - b.avgRating;
+// 			});
+// 			restaurants.reverse();
+// 			var results = {
+// 				restaurants: restaurants
+// 			};
+
+// 			console.log(restaurants);
+// 			response.render('restaurants.hbs', results);
+// 		});
+// });
+
+router.get('/', function(request, response) {
+	if (!request.session.user) {
+		return response.redirect('/login');
+	}
+
+	var DB = request.app.locals.DB;
+
+	DB.collection('restaurants')
+		.find({})
+		.sort({ avgRating: -1 })
+		.toArray(function(error, restaurants) {
+			if (error) {
+				console.log('error occured while connecting to restaurants collection');
+			}
+
+			var data = {
+				restaurants: restaurants,
+				loggedInUser: request.session.user
+			};
+			response.render('restaurants.hbs', data);
+		});
+});
+
 //Show single restaurant
 router.get('/:mongoId', function(request, response) {
 	if (!request.session.user) {
