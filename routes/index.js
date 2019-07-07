@@ -39,19 +39,19 @@ router.post('/login', function(request, response) {
 			response.render('invalid-login.hbs');
 			return;
 		}
-
+		else{
 
 		request.session.user = user;
 
-		response.redirect('/restaurants);
+		response.redirect('/restaurants');
 
-
+		}
 	});
 });
 
 router.get('/restaurants',function(request,response){
-	var db = request.app.locals.db;
-	if (request.session.user == true) {
+	var db = request.app.locals.DB;
+	if (request.session.user) {
 	db.collection('restaurant').find().toArray(function(err, restaurants)
 	 { 
 		 if(err) 
@@ -65,9 +65,7 @@ router.get('/restaurants',function(request,response){
 		var results={
 			restaurants : restaurants
 		}
-		response.render('restaurants',{
-			data : restaurants
-		});
+		response.render('restaurants',results);
 	} ) } else {
 		response.redirect('/login')
 	}

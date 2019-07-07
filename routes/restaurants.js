@@ -62,7 +62,7 @@ router.get('/:_id', function(request, response) {
 	}
 	var mongoId = request.params._id;
 	var Resdata = {};
-	var db = request.app.locals.db;
+	var db = request.app.locals.DB;
 	db.collection('restaurant').findOne(
 		{ _id: mongo.ObjectID(mongoId) },
 		function(error, data) {
@@ -95,7 +95,7 @@ router.get('/:_id', function(request, response) {
 router.post('/:mongoId', function(request, response) {
 	var resId = request.params.mongoId;
 	var avgRating;
-	var db = request.app.locals.db;
+	var db = request.app.locals.DB;
 	var data = {
 		rating: request.body.rating,
 		review: request.body.review,
