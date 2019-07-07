@@ -8,6 +8,8 @@ var cloudinary = require('cloudinary').v2;
 
 router.use(bodyparser.urlencoded(extended = true));
 
+router.use(express.static('public'))
+
 router.use(session({
     secret : 'secret'
 }))
@@ -165,6 +167,6 @@ router.get('/*',function(req,res){
     })
 })
 
-router.use(express.static('public'));
+
 
 module.exports = router;

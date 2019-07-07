@@ -10,7 +10,7 @@ var indexRoutes = require('./routes/index');
 
 var app = express();
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 app.use(session({ secret: 'catkey' }));
 
