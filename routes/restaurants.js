@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var session = require('express-session');
 
+
 //Show all restaurants according to ratings
 router.get('/restaurants',function(request,response){
 	var DB = request.app.locals.DB;
@@ -29,7 +30,8 @@ router.get('/restaurants',function(request,response){
 		console.log(restaurants);
 		response.render('restaurants.hbs',results);
 	} )
-})
+});
+
 //Show single restaurant
 router.get('/:mongoId', function(request, response) {
 	if (!request.session.user) {
