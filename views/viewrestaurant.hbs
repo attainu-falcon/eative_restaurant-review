@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+   <link href="{{style}}.css" rel="stylesheet" type="text/css" />
+  <style>
+    #footer{
+      color: white;
+      margin-left: 450px;
+    }
+    #logout{
+      margin-left: 1250px;
+    }
+    #help{
+      border: 1px black solid;
+    }
+  </style>
+</head>
+<body class="bg-light text-dark">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- <div class="text-white"> -->
+    <div class="navbar-nav">
+    <a href="/owner/panel" class="nav-link active"><h4>EATIVE</h4></a>
+    </div>
+    <div class="navbar-nav">
+    <a href="/owner/logout" id = "logout" class="nav-link active">Logout</a>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-sm bg-white text-dark">
+        {{!-- <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Agreement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Payment</a>
+          </li>
+        </ul> --}}
+      </nav>
+</br></br>
+
+<div class="container">
+    <p class="h1 text-center">{{data.restaurant}}</p>
+  <div id="demo" class="carousel slide" data-ride="carousel">
+     <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{data.imageurl}}" height="500px" width ="1120px">
+    </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="bg-white">
+      <div class="container">  </br>
+
+
+  <p class="h5">Address : {{data.address}}</p>
+  <p class="h5">State : {{data.state}}</p>
+  <p class="h5">Website : {{data.reswebsite}}</p>
+  <p class="h5">Email : {{data.resemail}}</p>
+  <p class="h5">Description : </p>
+  <p>{{data.description}}</p>
+  </div>
+  </div>
+  </div>
+
+</div>
+
+</br></br></br>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-fixed-bottom">
+  {{!-- <p id = "footer">color</p> --}}
+  <div class="container">
+     <h5 id = "footer">@ EATIVE 2019</h5> 
+  </div>
+</nav>
+
+
+
+
+</body>
+</html>

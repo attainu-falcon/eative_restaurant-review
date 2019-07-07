@@ -1,12 +1,24 @@
 var express = require('express');
 var path = require('path');
-var hbs = require('express-handlebars')
+// var hbs = require('express-handlebars')
+var bodyParser = require('body-parser');
 var mongoclient = require('mongodb').MongoClient;
+var session = require('express-session');
 var owner = require('./routes/owner')
+var restaurantRoutes = require('./routes/restaurants');
+var indexRoutes = require('./routes/index');
 
 var app = express();
 
+app.use(express.static('public'));
+
+app.use(session({ secret: 'catkey' }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use('/owner',owner);
+app.use('/', indexRoutes);
+app.use('/restaurants', restaurantRoutes);
 
 var DBURL;
 
@@ -23,10 +35,7 @@ mongoclient.connect(DBURL,function(err, client){
 });
 
 
-app.engine('hbs', hbs({defaultLayout : "main", extname : "hbs"}));
-
-app.set('view engine','hbs')
-
-app.set('views',path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 app.listen(process.env.PORT || 3000);
+

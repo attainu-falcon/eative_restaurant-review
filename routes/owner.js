@@ -8,8 +8,6 @@ var cloudinary = require('cloudinary').v2;
 
 router.use(bodyparser.urlencoded(extended = true));
 
-router.use(express.static('public'))
-
 router.use(session({
     secret : 'secret'
 }))
@@ -25,14 +23,14 @@ var upload = multer({dest : 'public/images/'})
 
 //login page served
 router.get('/', function(req,res,next){
-    res.render('login',{
+    res.render('ownerlogin',{
         title : 'login'
     });
 })
 
 //signup page served
 router.get('/signup', function(req,res,next){
-    res.render('signup',{
+    res.render('ownersignup',{
         title : 'owner signup'
     });
 })
@@ -108,7 +106,7 @@ router.get('/restaurant/:_id',function(req,res,next){
         if (err){
             throw err;
         }
-        res.render('restaurant',{
+        res.render('viewrestaurant',{
             title : result.restaurant ,
             data : result
         })
@@ -166,5 +164,7 @@ router.get('/*',function(req,res){
         style : '404'
     })
 })
+
+router.use(express.static('public'));
 
 module.exports = router;

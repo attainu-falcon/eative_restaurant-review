@@ -1,42 +1,74 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>login</title>
+<html lang="en">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EATIVE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    {{!-- <link rel="stylesheet" href="/stylesheets/main.css" /> --}}
+    <style>
+        .thumbnail img {
+            width: 100%;
+        }
+
+        .thumbnail {
+            padding: 0;
+        }
+
+        .thumbnail .caption-full {
+            padding: 9px;
+        }
+
+        .delete-form {
+            display: inline;
+        }
+
+        body {
+
+
+            background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=600');
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+
+            background-color: #f0f4f7;
+        }
+    </style>
 </head>
+
+
 <body>
 
-<a href="#" data-toggle="modal" data-target="#myModal">login</a>
+    <div class="container">
 
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
-        <div class="bg-light">
-            <div class="modal-body">
-            <div class="container">
-            <div class = "text-center">
-            
-                <form class="form-label-group" method="POST" action='/owner/login'>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button></br>
-                <h1>EATIVE</h1></br>
-            <input id = 'username' name ='email' type="email" class = 'form-control form-control-lg' placeholder="Email Address" required autofocus/>
-            <input id = 'password' name="password" type="password" class = 'form-control form-control-lg' placeholder="Password" required autofocus/></br>
-            <button id = 'button' class="btn btn-block btn-success"  type="submit" >Sign in</button></br>
-            <a class="float-right" href="/owner/signup">Sign Up</a>
-                </br>
-            </br>
-        </form>
+
+        <div class="row">
+            <h1 style="text-align: center">Login</h1>
+            <div style="width: 30%; margin: 25px auto; ">
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Your email</label>
+                        <input type="text" name="email" id="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Your password</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-info">Login</button>
+                    Don't have an account? <a href="/signup">Signup</a>
+                </form>
+            </div>
+
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
     </div>
 
 </body>
+
 </html>
