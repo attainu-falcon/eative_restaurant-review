@@ -43,7 +43,7 @@ router.post('/login', function(request, response) {
 
 		request.session.user = user;
 
-		response.redirect('/restaurants/restaurants');
+		response.redirect('/restaurants);
 
 
 	});
