@@ -1,19 +1,41 @@
 {
-  "name": "Eative",
+<<<<<<< HEAD
+	"name": "heroku",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {  
+		"start": "node app.js"
+	},
+	"keywords": [],
+	"author": "Monika Kumari",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1",
+		"express-session": "^1.16.2",
+		"hbs": "^4.0.4",
+		"mongodb": "^3.2.7"
+	}
+=======
+  "name": "heroku-app",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    "start": "node script.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "\u001b[A\u001b[A\u001b[A\u001b[A\u001b[A\u001b[D\u001b[D\u001b[D\u001b[A\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B\u001b[B"
+    "url": "https://github.com/rahul-talele-au2/heroku-app"
   },
-  "author": "Rahul Talele",
+  "author": "rahultalele",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "path": "^0.12.7"
   }
+>>>>>>> 9cce402bda5fe8929de3ce16f818fe0757ee9250
 }

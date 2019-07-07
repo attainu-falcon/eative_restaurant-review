@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EATIVE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    {{!-- <link rel="stylesheet" href="/stylesheets/main.css" /> --}}
+    <style>
+        .thumbnail img {
+            width: 100%;
+        }
+
+        .thumbnail {
+            padding: 0;
+        }
+
+        .thumbnail .caption-full {
+            padding: 9px;
+        }
+
+        .delete-form {
+            display: inline;
+        }
+
+        body {
+
+            background-color: rgb(236, 226, 226);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">EATIVE</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/restaurants">HOME</a>
+                    </li>
+                    <li>
+                        <a href= "#">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="/owners/add">ADD RESTAURANT</a>
+                    </li>
+                </ul>
+                <div class="collapse navbar-collapse">
+                    <ul class=" nav navbar-nav navbar-right">
+
+                        <li><span style="color:antiquewhite; padding-top:15px; margin:15px;">Hello {{loggedInUser.name}}
+                                !</span>
+                        </li>
+                        <li><a href="/logout">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="list-group">
+                    <li class="list-group-item active"><a href="#"><span style="color:white">Menu</span></a></li>
+                    <li class="list-group-item ">Timings</li>
+                    <li class="list-group-item "><a href="#">Map Location</a></li>
+                </div>
+            </div>
+            <div class="col-md-9">
+
+                <div class="thumbnail">
+
+                    <img class="img-responsive" src="{{restaurant.image}}" />
+                    <div class="caption-full">
+                        <h4 class="pull-right">Rs.2200/Two Person</h4>
+                        <h4><a>{{restaurant.name}}</a></h4>
+
+                        <p>{{restaurant.description}}</p>
+                        <p>
+                            Current restaurant rating: <strong><span
+                                    style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">{{restaurant.avgRating}}
+                                    stars</span></strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="well">
+
+                    <div class="text-right">
+                        <a class="btn btn-success pull-right" role="button">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Ratings and
+                            Reviews
+                        </a>
+                        <p></p>
+                    </div>
+
+                    <hr>
+
+                    <div class="row" style="background-color:blanchedalmond;padding:9px;margin:10px;">
+                        <form action="/restaurants/{{restaurant._id}}" method="POST">
+
+                            <input type="hidden" id="mongoId" name="abhiId" value="{{restaurant._id}}">
+
+
+                            <div class="form-group">
+                                <input class="form-control" type="number" name="rating" placeholder="rating (1-5)"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="review" placeholder="review" required />
+                            </div>
+
+
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-primary btn-block ">Submit!</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    {{#each commentAndRatings}}
+                    <div class="row" style="background-color:blanchedalmond;padding:9px;margin:10px;">
+
+                        <div class="col-md-12 ">
+
+                            <div>
+                                <strong>
+                                    <span style="color: orange;" class="glyphicon glyphicon-user"
+                                        aria-hidden="true"></span>
+                                    {{this.author}}</strong> <span
+                                    style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">Rated:
+                                    {{this.rating}} stars</span>
+                                <p></p>
+                                <p>{{this.review}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+
+        <p style="text-align: center;"> Trademark EATIVE 2019</p>
+</body>
+
+</html>

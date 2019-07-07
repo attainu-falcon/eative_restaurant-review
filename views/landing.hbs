@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Eative</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/landing.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"
+        async></script>
+    <style>
+        body {
+            background-color: rgb(29, 27, 27);
+        }
+
+        #landing-header {
+            z-index: 1;
+            position: relative;
+            text-align: center;
+            padding-top: 40vh;
+        }
+
+        #landing-header h1 {
+            color: white;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .slideshow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slideshow li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            opacity: 0;
+            z-index: 0;
+            animation: imageAnimation 50s linear infinite;
+        }
+
+        .slideshow li:nth-child(1) {
+            background-image: url(https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+        }
+
+        .slideshow li:nth-child(2) {
+            background-image: url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            animation-delay: 10s;
+        }
+
+        .slideshow li:nth-child(3) {
+            background-image: url(https://images.unsplash.com/photo-1505826759037-406b40feb4cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            animation-delay: 20s;
+        }
+
+        .slideshow li:nth-child(4) {
+            background-image: url(https://images.unsplash.com/photo-1504113888839-1c8eb50233d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            animation-delay: 30s;
+        }
+
+        .slideshow li:nth-child(5) {
+            background-image: url(https://images.unsplash.com/photo-1543528176-61b239494933?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            animation-delay: 40s;
+        }
+
+        @keyframes imageAnimation {
+            0% {
+                opacity: 0;
+                animation-timing-function: ease-in;
+            }
+
+            10% {
+                opacity: 1;
+                animation-timing-function: ease-out;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            30% {
+                opacity: 0;
+            }
+        }
+
+        /* Older browser support - class added by modernizr */
+        .no-cssanimations .slideshow li {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="landing-header">
+        <h1>
+            <span style="background-color:rgb(236, 56, 56) ;font-size:80px; border-radius:8px; padding:20px;">
+                &nbsp;EATIVE&nbsp;
+            </span>
+        </h1>
+        <a href="/login" class="btn btn-lg btn-danger">View All Restaurants</a>
+    </div>
+
+    <ul class="slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <p style="text-align: center;"> Trademark EATIVE 2019</p>
+</body>
+
+</html>
