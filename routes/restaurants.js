@@ -54,15 +54,16 @@ router.get('/', function(request, response) {
 		});
 });
 
+
 //Show single restaurant
-router.get('/:mongoId', function(request, response) {
+router.get('/:_id', function(request, response) {
 	if (!request.session.user) {
 		return response.redirect('/login');
 	}
-	var mongoId = request.params.mongoId;
+	var mongoId = request.params._id;
 	var Resdata = {};
-	var DB = request.app.locals.DB;
-	DB.collection('restaurants').findOne(
+	var db = request.app.locals.db;
+	db.collection('restaurant').findOne(
 		{ _id: mongo.ObjectID(mongoId) },
 		function(error, data) {
 			if (error) {
@@ -73,10 +74,10 @@ router.get('/:mongoId', function(request, response) {
 			Resdata.restaurant = data;
 			Resdata.loggedInUser = request.session.user;
 
-			console.log(data);
+			// console.log(data);
 		}
 	);
-	DB.collection('comments')
+	db.collection('comments')
 		.find({ resId: mongoId })
 		.toArray(function(err, result) {
 			if (err) throw err;
@@ -94,14 +95,14 @@ router.get('/:mongoId', function(request, response) {
 router.post('/:mongoId', function(request, response) {
 	var resId = request.params.mongoId;
 	var avgRating;
-	var DB = request.app.locals.DB;
+	var db = request.app.locals.db;
 	var data = {
 		rating: request.body.rating,
 		review: request.body.review,
 		author: request.session.user.name,
 		resId: resId
 	};
-	DB.collection('comments').insertOne(data, function(error, dataInserted) {
+	db.collection('comments').insertOne(data, function(error, dataInserted) {
 		if (error) {
 			response.send('error inserting data into DB');
 			return;
@@ -109,7 +110,7 @@ router.post('/:mongoId', function(request, response) {
 		response.redirect('/restaurants/' + resId);
 	});
 
-	DB.collection('comments')
+	db.collection('comments')
 		.find({ resId: resId })
 		.toArray(function(err, result) {
 			if (err) throw err;
@@ -124,7 +125,7 @@ router.post('/:mongoId', function(request, response) {
 			};
 			avgRating = parseInt(ratingSum / len);
 			console.log(avgRating);
-			DB.collection('restaurants').updateOne(
+			db.collection('restaurants').updateOne(
 				{ _id: mongo.ObjectID(resId) },
 				{ $set: { avgRating: avgRating } }
 			);
