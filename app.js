@@ -6,11 +6,10 @@ var mongo = require('mongodb');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-
 //for routers folder
 var restaurantRoutes = require('./routes/restaurants');
 var indexRoutes = require('./routes/index');
-
+var ownerRoutes = require('./routes/owner');
 
 // Create the app
 var app = express();
@@ -25,7 +24,7 @@ app.use(session({ secret: 'catkey', resave: false, saveUninitialized: false }));
 //for routers folder
 app.use('/', indexRoutes);
 app.use('/restaurants', restaurantRoutes);
-
+app.use('/owners', ownerRoutes);
 
 // Create the DB connection
 var DB;

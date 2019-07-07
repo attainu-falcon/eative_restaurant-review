@@ -5,14 +5,31 @@ var router = express.Router();
 
 var mongo = require('mongodb');
 
-
 var bodyParser = require('body-parser');
 
 var session = require('express-session');
 
-
-
-
+//Show all restaurants according to ratings
+router.get('/restaurants',function(request,response){
+	var DB = request.app.locals.DB;
+	DB.collection('restaurants').find().toArray(function(err, restaurants)
+	 { 
+		 if(err) 
+		 {
+			 throw err;
+		}
+		restaurants.sort(function(a, b){
+			return a.avgRating-b.avgRating
+		});
+		restaurants.reverse();
+		var results={
+			restaurants : restaurants
+		}
+		
+		console.log(restaurants);
+		response.render('restaurants.hbs',results);
+	} )
+})
 //Show single restaurant
 router.get('/:mongoId', function(request, response) {
 	if (!request.session.user) {
@@ -89,9 +106,4 @@ router.post('/:mongoId', function(request, response) {
 			);
 		});
 });
-
-
-
-
-
 module.exports = router;

@@ -1,10 +1,9 @@
 {
-<<<<<<< HEAD
 	"name": "heroku",
 	"version": "1.0.0",
 	"description": "",
 	"main": "app.js",
-	"scripts": {  
+	"scripts": {
 		"start": "node app.js"
 	},
 	"keywords": [],
@@ -17,25 +16,4 @@
 		"hbs": "^4.0.4",
 		"mongodb": "^3.2.7"
 	}
-=======
-  "name": "heroku-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rahul-talele-au2/heroku-app"
-  },
-  "author": "rahultalele",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "path": "^0.12.7"
-  }
->>>>>>> 9cce402bda5fe8929de3ce16f818fe0757ee9250
 }

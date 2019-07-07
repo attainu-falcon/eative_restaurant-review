@@ -5,11 +5,9 @@ var router = express.Router();
 
 var mongo = require('mongodb');
 
-
 var bodyParser = require('body-parser');
 
 var session = require('express-session');
-
 
 // App routes (URLs)
 //main landing page with just logo
@@ -37,7 +35,7 @@ router.post('/login', function(request, response) {
 		}
 
 		request.session.user = user;
-		response.redirect('/restaurants');
+		response.redirect('/restaurants/restaurants');
 	});
 });
 
@@ -46,7 +44,7 @@ router.get('/signup', function(request, response) {
 });
 
 router.post('/signup', function(request, response) {
-	
+	var DB = request.app.locals.DB;
 	var newUser = {
 		name: request.body.name,
 		email: request.body.email,
@@ -62,26 +60,5 @@ router.get('/logout', function(request, response) {
 	request.session.user = null;
 	response.redirect('/login');
 });
-
-router.get('/restaurants',function(request,response){
-	var DB = request.app.locals.DB;
-	DB.collection('restaurants').find().toArray(function(err, restaurants)
-	 { 
-		 if(err) 
-		 {
-			 throw err;
-		}
-		restaurants.sort(function(a, b){
-			return a.avgRating-b.avgRating
-		});
-		restaurants.reverse();
-		var results={
-			restaurants : restaurants
-		}
-		
-		console.log(restaurants);
-		response.render('restaurants.hbs',results);
-	} )
-})
 
 module.exports = router;
