@@ -22,13 +22,19 @@ router.get('/login', function(request, response) {
 });
 
 router.post('/login', function(request, response) {
-	var db= request.app.locals.db;
+
+	
+	var DB = request.app.locals.DB;
 	var user = {
 		email: request.body.email,
 		password: request.body.password
 	};
 
-	db.collection('users').findOne(user, function(error, user) {
+
+	
+
+	DB.collection('users').findOne(user, function(error, user) {
+
 		if (error || !user) {
 			response.render('invalid-login.hbs');
 			return;
@@ -63,19 +69,28 @@ router.get('/restaurants',function(request,response){
 	}
 })
 
+
+		
+
 router.get('/signup', function(request, response) {
 	response.render('signup.hbs');
 });
 
 router.post('/signup', function(request, response) {
-	var db = request.app.locals.db;
+
+	
+
+	var DB = request.app.locals.DB;
+
 	var newUser = {
 		name: request.body.name,
 		email: request.body.email,
 		password: request.body.password
 	};
 
-	db.collection('users').insertOne(newUser, function(error, data) {
+
+	
+	DB.collection('users').insertOne(newUser, function(error, data) {
 		response.redirect('/login');
 	});
 });

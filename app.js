@@ -7,18 +7,25 @@ var session = require('express-session');
 var owner = require('./routes/owner')
 var restaurantRoutes = require('./routes/restaurants');
 var indexRoutes = require('./routes/index');
+var ownerRoutes = require('./routes/owner');
 
 var app = express();
 
-// app.use(express.static('public'));
 
-app.use(session({ secret: 'catkey' }));
+// App configurations and settings.
+app.set('view engine', 'hbs');
+app.use(bodyParser.urlencoded({ extended: false }));
+// Static folder
+app.use(express.static('public'));
+app.use(session({ secret: 'catkey', resave: false, saveUninitialized: false }));
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/owner',owner);
 app.use('/', indexRoutes);
 app.use('/restaurants', restaurantRoutes);
+app.use('/owners', ownerRoutes);
 
 var DBURL;
 

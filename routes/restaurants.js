@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var session = require('express-session');
 
+
 //Show single restaurant
 router.get('/:_id', function(request, response) {
 	if (!request.session.user) {
