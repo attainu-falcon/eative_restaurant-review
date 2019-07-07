@@ -40,8 +40,12 @@ router.post('/login', function(request, response) {
 			return;
 		}
 
-		request.session.user = true;
-		response.redirect('/restaurants');
+
+		request.session.user = user;
+
+		response.redirect('/restaurants/restaurants');
+
+
 	});
 });
 

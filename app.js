@@ -7,7 +7,7 @@ var session = require('express-session');
 var owner = require('./routes/owner')
 var restaurantRoutes = require('./routes/restaurants');
 var indexRoutes = require('./routes/index');
-var ownerRoutes = require('./routes/owner');
+//var ownerRoutes = require('./routes/owner');
 
 var app = express();
 
@@ -25,20 +25,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/owner',owner);
 app.use('/', indexRoutes);
 app.use('/restaurants', restaurantRoutes);
-app.use('/owners', ownerRoutes);
+//app.use('/owners', ownerRoutes);
 
-var DBURL;
 
-if(process.env.MY_DB)
-    DBURL = process.env.MY_DB
- else
-    DBURL = 'mongodb://localhost:27017';
+// Create the DB connection
+var DB;
+var DB_URL = process.env.DB_URL || 'mongodb://localhost:27017/eative';
 
-mongoclient.connect(DBURL,function(err, client){
-    if(err){
-        throw err
-    } ;
-    app.locals.db = client.db('eative');
+// Create a Mongo client
+var mongoClient = new mongo.MongoClient(DB_URL, { useNewUrlParser: true });
+mongoClient.connect(function(error) {
+	if (error) {
+		console.log('Error connecting to the database.');
+	} else {
+		console.log('DB connection established.');
+		DB = mongoClient.db('eative');
+		app.locals.DB = DB;
+	}
+
+
+
 });
 
 
