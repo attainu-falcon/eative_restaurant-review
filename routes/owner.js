@@ -39,7 +39,7 @@ router.get('/signup', function(req,res,next){
 
 // owner added to database
 router.post('/auth',function(req,res){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('owner').insertOne(req.body, function(err,result){
         if(err){
             throw err;
@@ -50,7 +50,7 @@ router.post('/auth',function(req,res){
 
 // owner logged in and session started
 router.post('/login',function(req,res){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('owner').findOne({email : req.body.email},function(err,result){
         if(req.body.email == result.email && req.body.password == result.password){
             req.session.login = true;
@@ -63,7 +63,7 @@ router.post('/login',function(req,res){
 // after login page (here list of restaurants will be shown of same email id)
 router.get('/panel',function(req,res){
     if(req.session.login == true){
-        var db = req.app.locals.db;
+        var db = req.app.locals.DB;
         db.collection('restaurant').find({ OWNERID: MONGOID}).toArray(function(err,result){
         res.render('ownerlanding',{
             title : 'Your restaurants',
@@ -87,7 +87,7 @@ router.get('/addrestaurant', function(req,res){
 
 // this will add the restaurant to database
 router.post('/uploadrestaurant', upload.single('uploadedfile'),function(req,res){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('restaurant').insertOne(req.body, function(err,result){
             db.collection('restaurant').updateOne({ _id : require('mongodb').ObjectID(req.body._id) },{$set : {OWNERID : MONGOID}},function(err,result){
                  cloudinary.uploader.upload(req.file.path, function(error, result) {
@@ -103,7 +103,7 @@ router.post('/uploadrestaurant', upload.single('uploadedfile'),function(req,res)
 
 //particular restuarnt and its details will be shown
 router.get('/restaurant/:_id',function(req,res,next){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('restaurant').findOne({ _id : require('mongodb').ObjectID(req.params._id) },function(err,result){
         if (err){
             throw err;
@@ -117,7 +117,7 @@ router.get('/restaurant/:_id',function(req,res,next){
 
 // this will delete a particular restaurant from database
 router.get('/delete/:_id',function(req,res){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('restaurant').deleteOne({ _id : require('mongodb').ObjectID(req.params._id) },function(err,result){
         if (err){
             throw err;
@@ -129,7 +129,7 @@ router.get('/delete/:_id',function(req,res){
 
 // this will redirect to edit page where details about restaurant will be changed
 router.get('/editrestaurant/:_id',function(req,res){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('restaurant').findOne({ _id : require('mongodb').ObjectID(req.params._id) },function(err,result){
         if (err){
             throw err;
@@ -144,7 +144,7 @@ router.get('/editrestaurant/:_id',function(req,res){
 
 // this will update the restaurant
 router.post('/update',function(req,res){
-    var db = req.app.locals.db;
+    var db = req.app.locals.DB;
     db.collection('restaurant').updateOne({ _id : require('mongodb').ObjectID(EDIT_ID) },{ $set : { address : req.body.address , reswebsite : req.body.reswebsite, restaurant : req.body.restaurant, resemail : req.body.resemail, description : req.body.description }},function(err,result){
         if (err){
             throw err;
