@@ -14,6 +14,7 @@
     <style>
         .thumbnail img {
             width: 100%;
+            height: 200px;
         }
 
         .thumbnail {
@@ -99,16 +100,16 @@
             {{#each restaurants}}
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img src="{{image}}" />
+                    <img src="{{this.imageurl}}"/>
                     <div class="caption">
-                        <h4>{{name}}</h4>
+                        <h4>{{this.restaurant}}</h4>
                         <span
                             style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">
                             Rating:{{avgRating}} </span>
 
                     </div>
                     <p>
-                        <a href="/restaurants/{{_id}}" class="btn btn-primary">More Info</a>
+                        <a href="/restaurants/{{this._id}}" class="btn btn-primary">More Info</a>
 
                     </p>
                 </div>

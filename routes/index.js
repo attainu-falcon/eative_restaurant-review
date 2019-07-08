@@ -3,7 +3,7 @@ var express = require('express');
 
 var router = express.Router();
 
-var mongo = require('mongodb');
+// var mongo = require('mongodb');
 
 var bodyParser = require('body-parser');
 

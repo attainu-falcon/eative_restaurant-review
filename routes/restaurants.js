@@ -3,7 +3,7 @@ var express = require('express');
 
 var router = express.Router();
 
-var mongo = require('mongodb');
+// var mongo = require('mongodb');
 
 var bodyParser = require('body-parser');
 
@@ -64,7 +64,7 @@ router.get('/:_id', function(request, response) {
 	var Resdata = {};
 	var db = request.app.locals.DB;
 	db.collection('restaurant').findOne(
-		{ _id: mongo.ObjectID(mongoId) },
+		{ _id: require('mongodb').ObjectID(mongoId) },
 		function(error, data) {
 			if (error) {
 				response.send('Error: Not found');
@@ -126,7 +126,7 @@ router.post('/:mongoId', function(request, response) {
 			avgRating = parseInt(ratingSum / len);
 			console.log(avgRating);
 			db.collection('restaurants').updateOne(
-				{ _id: mongo.ObjectID(resId) },
+				{ _id: require('mongodb').ObjectID(resId) },
 				{ $set: { avgRating: avgRating } }
 			);
 		});
