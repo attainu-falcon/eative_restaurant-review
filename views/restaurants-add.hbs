@@ -79,39 +79,31 @@
     </nav>
 
     <div class="container">
-        <header class="jumbotron">
-            <div class="container">
-                <h1>Welcome To EATIVE</h1>
-                <p>
-                    Widest Range Of Delivery Restaurants | Trusted Eative Ratings |
-                    Unlimited Choices
-                </p>
-                <p>
+        <div class="row">
+            <h1 style="text-align:center; ">create a new restaurant</h1>
+            <div style="width:30%;margin:25px auto;">
 
-                    <a class="btn btn-primary btn-large" href="#">Sorted By Ratings</a>
-                </p>
-                </p>
-            </div>
-        </header>
-        <div class="row text-center" style="display:flex;flex-wrap:wrap;">
-            {{#each restaurants}}
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="{{image}}" />
-                    <div class="caption">
-                        <h4>{{name}}</h4>
-                        <span
-                            style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">
-                            Rating:{{avgRating}} </span>
-
-                    </div>
-                    <p>
-                        <a href="/restaurants/{{_id}}" class="btn btn-primary">More Info</a>
-
-                    </p>
+                {{#if restaurantAdded}}
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Your restaurant was created successfully!
                 </div>
+                {{/if}}
+                <form action="/restaurants/add" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="name" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="image" placeholder="image" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="description" placeholder="description" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block ">Submit!</button>
+                    </div>
+                </form>
+                <a href="/admin">Go Back</a>
             </div>
-            {{/each}}
         </div>
     </div>
     <p style="text-align: center;"> Trademark EATIVE 2019</p>

@@ -9,27 +9,7 @@ var bodyParser = require('body-parser');
 
 var session = require('express-session');
 
-//Show all restaurants according to ratings
-// router.get('/', function(request, response) {
-// 	var DB = request.app.locals.DB;
-// 	DB.collection('restaurants')
-// 		.find()
-// 		.toArray(function(err, restaurants) {
-// 			if (err) {
-// 				throw err;
-// 			}
-// 			restaurants.sort(function(a, b) {
-// 				return a.avgRating - b.avgRating;
-// 			});
-// 			restaurants.reverse();
-// 			var results = {
-// 				restaurants: restaurants
-// 			};
-
-// 			console.log(restaurants);
-// 			response.render('restaurants.hbs', results);
-// 		});
-// });
+//this will show the list of restaurants
 
 router.get('/', function(request, response) {
 	if (!request.session.user) {
@@ -54,16 +34,78 @@ router.get('/', function(request, response) {
 		});
 });
 
+//this will show a form to add restaurants
+router.get('/add', function(request, response) {
+	var data = {};
+
+	if (request.query.success) {
+		data.restaurantAdded = true;
+	}
+	response.render('restaurants-add.hbs', data);
+});
+
+//this will save the form data into db and display that on /restaurants route
+
+router.post('/add', function(request, response) {
+	var name = request.body.name;
+	var image = request.body.image;
+	var description = request.body.description;
+	var DB = request.app.locals.DB;
+
+	var newRestaurant = {
+		name: name,
+		image: image,
+		description: description
+	};
+
+	DB.collection('restaurants').insertOne(newRestaurant, function(
+		error,
+		result
+	) {
+		if (error) {
+			console.log(
+				'error occured while inserting data into the restaurants collection'
+			);
+		}
+
+		response.redirect('/restaurants/add?success=true');
+	});
+});
+
+//Show restuarant edit form
+router.get('/edit/:mongoId', function(request, response) {
+	var mongoId = request.params.mongoId;
+	var avgRating;
+	var DB = request.app.locals.DB;
+
+	var editSuccess = request.query.success;
+
+	DB.collection('restaurants').findOne(
+		{ _id: mongo.ObjectID(mongoId) },
+		function(error, data) {
+			if (error) {
+				response.send('Error: Not found');
+				return;
+			}
+
+			if (editSuccess) {
+				data.success = true;
+			}
+
+			response.render('restaurants-edit.hbs', data);
+		}
+	);
+});
 
 //Show single restaurant
-router.get('/:_id', function(request, response) {
+router.get('/:mongoId', function(request, response) {
 	if (!request.session.user) {
 		return response.redirect('/login');
 	}
-	var mongoId = request.params._id;
+	var mongoId = request.params.mongoId;
 	var Resdata = {};
-	var db = request.app.locals.DB;
-	db.collection('restaurant').findOne(
+	var DB = request.app.locals.DB;
+	DB.collection('restaurants').findOne(
 		{ _id: mongo.ObjectID(mongoId) },
 		function(error, data) {
 			if (error) {
@@ -74,10 +116,10 @@ router.get('/:_id', function(request, response) {
 			Resdata.restaurant = data;
 			Resdata.loggedInUser = request.session.user;
 
-			// console.log(data);
+			console.log(data);
 		}
 	);
-	db.collection('comments')
+	DB.collection('comments')
 		.find({ resId: mongoId })
 		.toArray(function(err, result) {
 			if (err) throw err;
@@ -88,6 +130,38 @@ router.get('/:_id', function(request, response) {
 		});
 });
 
+//Update a restaurant data in db
+router.post('/edit/:mongoId', function(request, response) {
+	var mongoId = request.params.mongoId;
+	var DB = request.app.locals.DB;
+	var newName = request.body.name;
+	var newImage = request.body.image;
+	var newDescription = request.body.description;
+
+	DB.collection('restaurants').updateOne(
+		{ _id: mongo.ObjectID(mongoId) }, // Filter an unique object
+		{ $set: { name: newName, image: newImage, description: newDescription } }, // The new data to update
+		function(error, data) {
+			// The callback after update is done
+
+			response.redirect('/restaurants/edit/' + mongoId + '?success=true');
+		}
+	);
+});
+
+//Deletes a post via JSON/AJAX
+router.post('/delete/:mongoId', function(request, response) {
+	var mongoId = request.params.mongoId;
+	var DB = request.app.locals.DB;
+
+	DB.collection('restaurants').deleteOne(
+		{ _id: mongo.ObjectID(mongoId) },
+		function(error, status) {
+			response.json({ deleted: true });
+		}
+	);
+});
+
 //////////////////////////////////////////////////////
 //comment and review routes
 /////////////////////////////////////////////////////
@@ -95,14 +169,14 @@ router.get('/:_id', function(request, response) {
 router.post('/:mongoId', function(request, response) {
 	var resId = request.params.mongoId;
 	var avgRating;
-	var db = request.app.locals.DB;
+	var DB = request.app.locals.DB;
 	var data = {
 		rating: request.body.rating,
 		review: request.body.review,
 		author: request.session.user.name,
 		resId: resId
 	};
-	db.collection('comments').insertOne(data, function(error, dataInserted) {
+	DB.collection('comments').insertOne(data, function(error, dataInserted) {
 		if (error) {
 			response.send('error inserting data into DB');
 			return;
@@ -110,7 +184,7 @@ router.post('/:mongoId', function(request, response) {
 		response.redirect('/restaurants/' + resId);
 	});
 
-	db.collection('comments')
+	DB.collection('comments')
 		.find({ resId: resId })
 		.toArray(function(err, result) {
 			if (err) throw err;
@@ -125,7 +199,7 @@ router.post('/:mongoId', function(request, response) {
 			};
 			avgRating = parseInt(ratingSum / len);
 			console.log(avgRating);
-			db.collection('restaurants').updateOne(
+			DB.collection('restaurants').updateOne(
 				{ _id: mongo.ObjectID(resId) },
 				{ $set: { avgRating: avgRating } }
 			);

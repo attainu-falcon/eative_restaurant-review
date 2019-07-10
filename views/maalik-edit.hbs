@@ -10,7 +10,7 @@
         href="https://static.wixstatic.com/media/1d595b_08578658b4e340a6869236035a2dc190~mv2.png/v1/fit/w_2500,h_1330,al_c/1d595b_08578658b4e340a6869236035a2dc190~mv2.png"
         type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    {{!-- <link rel="stylesheet" href="/stylesheets/main.css" /> --}}
+
     <style>
         .thumbnail img {
             width: 100%;
@@ -29,18 +29,22 @@
         }
 
         body {
-            /* background-image: url('https://images.unsplash.com/photo-1508615039623-a25605d2b022?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
-	
-	height: 100%;
 
-	/* Center and scale the image nicely */
-            /* background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;  */
 
-            background-color: rgb(236, 226, 226);
+            background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=600');
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+
+            background-color: #f0f4f7;
         }
     </style>
+
+
 </head>
 
 <body>
@@ -66,6 +70,7 @@
                     <li>
                         <a href="/admin">ADMIN</a>
                     </li>
+
                 </ul>
                 <div class="collapse navbar-collapse">
                     <ul class=" nav navbar-nav navbar-right">
@@ -77,44 +82,53 @@
                 </div>
             </div>
     </nav>
-
     <div class="container">
-        <header class="jumbotron">
-            <div class="container">
-                <h1>Welcome To EATIVE</h1>
-                <p>
-                    Widest Range Of Delivery Restaurants | Trusted Eative Ratings |
-                    Unlimited Choices
-                </p>
-                <p>
-
-                    <a class="btn btn-primary btn-large" href="#">Sorted By Ratings</a>
-                </p>
-                </p>
+        <div class="row">
+            {{#if success}}
+            <div class="alert alert-success">
+                <strong>Success: </strong> Your restaurant has been edited successfully!
             </div>
-        </header>
-        <div class="row text-center" style="display:flex;flex-wrap:wrap;">
-            {{#each restaurants}}
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="{{image}}" />
-                    <div class="caption">
-                        <h4>{{name}}</h4>
-                        <span
-                            style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">
-                            Rating:{{avgRating}} </span>
+            {{/if}}
 
+            <h1 style="text-align:center; ">Edit restaurant -"{{name}}"</h1>
+            <div style="width:30%;margin:25px auto;">
+
+
+                <form action="/maaliks/edit/{{_id}}" method="POST">
+
+                    <input type="hidden" id="mongoId" value="{{_id}}">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" value="{{name}}">
                     </div>
-                    <p>
-                        <a href="/restaurants/{{_id}}" class="btn btn-primary">More Info</a>
+                    <div class="form-group">
+                        <label for="image url">image</label>
+                        <input type="text" name="image" id="image" class="form-control" value="{{image}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" class="form-control"
+                            value="{{description}}">
+                    </div>
 
-                    </p>
-                </div>
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+
+                </form>
+
+                <hr>
+
+
+                <button id="deleteButton1" class="btn btn-danger">Delete</button>
+
+                <a href="/maaliks/home">Go Back</a>
             </div>
-            {{/each}}
         </div>
     </div>
     <p style="text-align: center;"> Trademark EATIVE 2019</p>
+
+    <script src="/maalik-delete.js"></script>
 </body>
 
 </html>

@@ -81,34 +81,27 @@
     <div class="container">
         <header class="jumbotron">
             <div class="container">
-                <h1>Welcome To EATIVE</h1>
+                <h1>ADMIN Dashboard</h1>
                 <p>
-                    Widest Range Of Delivery Restaurants | Trusted Eative Ratings |
-                    Unlimited Choices
+                    Messages Recieved
                 </p>
-                <p>
 
-                    <a class="btn btn-primary btn-large" href="#">Sorted By Ratings</a>
-                </p>
-                </p>
+
             </div>
         </header>
         <div class="row text-center" style="display:flex;flex-wrap:wrap;">
-            {{#each restaurants}}
+            {{#each owners}}
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img src="{{image}}" />
+
                     <div class="caption">
-                        <h4>{{name}}</h4>
-                        <span
-                            style="color:aliceblue; font-weight:bold;background-color:rgb(236, 127, 25);;;padding:5px;border-radius: 5px;">
-                            Rating:{{avgRating}} </span>
-
+                        <h4> Name:{{name}}</h4>
+                        <p> City:{{city}}</p>
+                        <p>Phone Number:{{phone}}</p>
+                        <p>Email:{{email}}</p>
+                        <p>Message:{{description}}</p>
                     </div>
-                    <p>
-                        <a href="/restaurants/{{_id}}" class="btn btn-primary">More Info</a>
 
-                    </p>
                 </div>
             </div>
             {{/each}}

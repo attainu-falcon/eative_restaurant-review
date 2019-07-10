@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>EATIVE</title>
+    <link rel="icon"
+        href="https://static.wixstatic.com/media/1d595b_08578658b4e340a6869236035a2dc190~mv2.png/v1/fit/w_2500,h_1330,al_c/1d595b_08578658b4e340a6869236035a2dc190~mv2.png"
+        type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     {{!-- <link rel="stylesheet" href="/stylesheets/main.css" /> --}}
     <style>
@@ -26,16 +29,17 @@
         }
 
         body {
-            /* background-image: url('https://images.unsplash.com/photo-1508615039623-a25605d2b022?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
-	
-	height: 100%;
 
-	/* Center and scale the image nicely */
-            /* background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;  */
+            background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=600');
 
-            background-color: rgb(236, 226, 226);
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+
+            background-color: #f0f4f7;
         }
     </style>
 </head>
@@ -55,7 +59,13 @@
                         <a href="https://www.linkedin.com/in/monika9/">ABOUT</a>
                     </li>
                     <li>
-                        <a href="/owners/add">ADD RESTAURANT</a>
+                        <a href="/owners/add">CONTACT US</a>
+                    </li>
+                    <li>
+                        <a href="/maaliks">ADD RESTAURANT</a>
+                    </li>
+                    <li>
+                        <a href="/admin">ADMIN</a>
                     </li>
                 </ul>
                 <div class="collapse navbar-collapse">
@@ -71,26 +81,26 @@
 
     <div class="container">
         <div class="row">
-            <h1 style="text-align:center; "><strong>EATIVE</strong> for Businesses</h1>
+            <h1 style="text-align:center; "><strong>EATIVE</strong></h1>
 
-            <p style="text-align:center;">Get more out of your business, without losing focus on what is most important
-                — delighting your customers</p>
+            <p style="text-align:center;">We would love to hear from you!</p>
 
-            <p style="text-align:center;">From managing your restaurant information to
-                streamlining your operations, Eative has got you covered</p>
 
 
             <div style="width:30%;margin:25px auto;">
 
                 {{#if restaurantAdded}}
                 <div class="alert alert-success">
-                    <strong>Success!</strong> Your request has been recieved. Sit back and relax. We will contact you
+                    <strong>Success!</strong> Your message has been recieved. Sit back and relax. We will contact you
                     soon.
                 </div>
                 {{/if}}
                 <form action="/owners/add" method="POST">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="name" placeholder="name" />
+                        <input class="form-control" type="text" name="name" placeholder="your name" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="your email" />
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" name="city" placeholder="city" />
@@ -98,14 +108,10 @@
                     <div class="form-group">
                         <input class="form-control" type="number" name="phone" placeholder="Phone Number" />
                     </div>
+
+
                     <div class="form-group">
-                        <input class="form-control" type="text" name="status" placeholder="Yes/No" />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="image" placeholder="image" />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="description" placeholder="description" />
+                        <input class="form-control" type="text" name="description" placeholder="Message" />
                     </div>
                     <div class="form-group">
                         <button class="btn btn-lg btn-primary btn-block ">Submit!</button>

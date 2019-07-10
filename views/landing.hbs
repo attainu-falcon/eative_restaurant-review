@@ -1,105 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Eative</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/stylesheets/landing.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"
-        async></script>
+    <title>EATIVE</title>
+    <link rel="icon"
+        href="https://static.wixstatic.com/media/1d595b_08578658b4e340a6869236035a2dc190~mv2.png/v1/fit/w_2500,h_1330,al_c/1d595b_08578658b4e340a6869236035a2dc190~mv2.png"
+        type="image/x-icon">
     <style>
         body {
-            background-color: rgb(29, 27, 27);
+
+
+
+            background-color: #f0f4f7;
+            overflow-x: hidden;
         }
 
-        #landing-header {
-            z-index: 1;
+
+        .carousel-item {
+            height: 450px;
+        }
+
+        .carousel-image-1 {
+            background: url(https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            background-size: cover;
+        }
+
+        .carousel-image-2 {
+            background: url(https://images.unsplash.com/photo-1516750548995-3db798a6f427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            background-size: cover;
+        }
+
+        .carousel-image-3 {
+            background: url(https://images.unsplash.com/photo-1524010235651-6318320e3276?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+            background-size: cover;
+        }
+
+        #home-heading {
             position: relative;
+            min-height: 200px;
+            background-image: url('https://img.freepik.com/free-photo/food-background-food-concept-with-various-tasty-fresh-ingredients-cooking-italian-food-ingredients-view-from-with-copy-space_1220-1491.jpg?size=626&ext=jpg');
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 20vh;
             text-align: center;
-            padding-top: 40vh;
+            color: #fff;
         }
 
-        #landing-header h1 {
-            color: white;
-            font-size: 60px;
-            font-weight: bold;
-            margin-bottom: 35px;
-        }
-
-        .slideshow {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .slideshow li {
-            width: 100%;
-            height: 100%;
+        .dark-overlay {
             position: absolute;
             top: 0;
             left: 0;
-            background-size: cover;
-            background-position: 50% 50%;
-            background-repeat: no-repeat;
-            opacity: 0;
-            z-index: 0;
-            animation: imageAnimation 50s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
         }
 
-        .slideshow li:nth-child(1) {
-            background-image: url(https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+        #gallery {
+            background-color: blanchedalmond;
         }
 
-        .slideshow li:nth-child(2) {
-            background-image: url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
-            animation-delay: 10s;
-        }
-
-        .slideshow li:nth-child(3) {
-            background-image: url(https://images.unsplash.com/photo-1505826759037-406b40feb4cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
-            animation-delay: 20s;
-        }
-
-        .slideshow li:nth-child(4) {
-            background-image: url(https://images.unsplash.com/photo-1504113888839-1c8eb50233d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
-            animation-delay: 30s;
-        }
-
-        .slideshow li:nth-child(5) {
-            background-image: url(https://images.unsplash.com/photo-1543528176-61b239494933?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
-            animation-delay: 40s;
-        }
-
-        @keyframes imageAnimation {
-            0% {
-                opacity: 0;
-                animation-timing-function: ease-in;
-            }
-
-            10% {
-                opacity: 1;
-                animation-timing-function: ease-out;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            30% {
-                opacity: 0;
-            }
-        }
-
-        /* Older browser support - class added by modernizr */
-        .no-cssanimations .slideshow li {
-            opacity: 1;
+        #main-footer {
+            background: #000;
+            color: #fff;
         }
     </style>
 </head>
@@ -107,23 +82,216 @@
 <body>
 
 
-    <div id="landing-header">
-        <h1>
-            <span style="background-color:rgb(236, 56, 56) ;font-size:80px; border-radius:8px; padding:20px;">
-                &nbsp;EATIVE&nbsp;
-            </span>
-        </h1>
-        <a href="/login" class="btn btn-lg btn-danger">View All Restaurants</a>
-    </div>
+    <!-- SHOWCASE SLIDER -->
+    <section id="showcase">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item carousel-image-1 active">
+                    <div class="container">
+                        <div class="carousel-caption  mb-5">
+                            <h1 class="mb-5">
+                                <span
+                                    style="background-color:rgb(236, 56, 56) ;font-size:80px; border-radius:8px; padding:20px;">
+                                    &nbsp;EATIVE&nbsp;
+                                </span>
+                            </h1>
 
-    <ul class="slideshow">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <p style="text-align: center;"> Trademark EATIVE 2019</p>
+                            <a href="/restaurants" class="btn btn-lg btn-danger">View All Restaurants</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item carousel-image-2">
+                    <div class="container">
+                        <div class="carousel-caption  mb-5">
+                            <h1 class="mb-5">
+                                <span
+                                    style="background-color:rgb(236, 56, 56) ;font-size:80px; border-radius:8px; padding:20px;">
+                                    &nbsp;EATIVE&nbsp;
+                                </span>
+                            </h1>
+
+                            <a href="/restaurants" class="btn btn-primary btn-lg">View Restaurants</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item carousel-image-3">
+                    <div class="container">
+                        <div class="carousel-caption   mb-5">
+                            <h1 class="mb-5">
+                                <span
+                                    style="background-color:rgb(236, 56, 56) ;font-size:80px; border-radius:8px; padding:20px;">
+                                    &nbsp;EATIVE&nbsp;
+                                </span>
+                            </h1>
+
+                            <a href="/restaurants" class="btn btn-success btn-lg">View Restaurants</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+
+            <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </section>
+
+    <!--HOME ICON SECTION  -->
+    <section id="home-icons" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-2 text-center">
+                    <i class="fas fa-coffee fa-3x mb-2"></i>
+                    <h3>Cafe`s & Luxury Dining</h3>
+
+                </div>
+                <div class="col-md-4 mb-2 text-center">
+                    <i class="fa fa-beer fa-3x mb-2"></i>
+                    <h3>Drinks & Night Life</h3>
+
+                </div>
+                <div class="col-md-4 mb-2 text-center">
+                    <i class="fas fa-cart-plus fa-3x mb-2"></i>
+                    <h3>Pocket Friendly Delivery</h3>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HOME HEADING SECTION -->
+    <section id="home-heading" class="p-5">
+        <div class="dark-overlay">
+            <div class="row">
+                <div class="col">
+                    <div class="container pt-5">
+                        <h1>Are You Ready To Get Started?</h1>
+                        <p class="d-none d-md-block">Explore the curated lists of top restaurants, cafes, pubs, and bars
+                            in Delhi NCR, based on trends</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section id="info" class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <h3>Eative <span
+                            style="background-color:gold; color:white; padding:5px;border-radius:5px;">Gold</span></h3>
+                    <p>Experience new places in your city every day and enjoy limitless dining privileges!</p>
+                    <a href="#" class="btn btn-outline-danger btn-lg">Learn More</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1458576627435-430ad58ead3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PHOTO GALLERY -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h1 class="text-center">Photo Gallery</h1>
+            {{!-- <p class="text-center">Check out our photos</p> --}}
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <a href="https://images.unsplash.com/photo-1463183506955-a97c90ebdc1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        data-toggle="lightbox" data-gallery="img-gallery" data-height="320" data-width="510">
+                        <img src="https://images.unsplash.com/photo-1463183506955-a97c90ebdc1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://images.unsplash.com/photo-1484235457748-13307a730b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        data-toggle="lightbox" data-gallery="img-gallery" data-height="320" data-width="510">
+                        <img src="https://images.unsplash.com/photo-1484235457748-13307a730b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://images.unsplash.com/photo-1558350991-2de158da1f0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        data-toggle="lightbox" data-gallery="img-gallery" data-height="312" data-width="510">
+                        <img src="https://images.unsplash.com/photo-1558350991-2de158da1f0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <a href="https://images.unsplash.com/photo-1414438359676-7b001e93aa49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        data-toggle="lightbox" data-gallery="img-gallery" data-height="312" data-width="510">
+                        <img src="https://images.unsplash.com/photo-1414438359676-7b001e93aa49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://images.unsplash.com/photo-1541856644905-bd40b138cbbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        data-toggle="lightbox" data-gallery="img-gallery" data-height="312" data-width="510">
+                        <img src="https://images.unsplash.com/photo-1541856644905-bd40b138cbbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="img-fluid">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="https://images.unsplash.com/photo-1558447828-309b45e54554?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        data-toggle="lightbox" data-gallery="img-gallery" data-height="312" data-width="510">
+                        <img src="https://images.unsplash.com/photo-1558447828-309b45e54554?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="text-center p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>Copyright &copy;
+                        <span id="year"></span> Eative</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+    <script src="/landing.js"></script>
+
+
 </body>
 
 </html>
